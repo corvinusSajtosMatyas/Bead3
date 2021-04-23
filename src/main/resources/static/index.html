@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>3. Beadandó</title>
+</head>
+<body>
+<h1>3. Beadandó</h1>
+<h2></h2>
+<br>
+<code></code>
+<br>
+<input type="text">
+<button id="getGreeting">GET</button>
+<button id="postReverse">POST</button>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $('#getGreeting').click(function () {
+        let val = $('input').val();
+        $.get(`/harmadik${val ? `?name=${val}` : ''}`, function (res) {
+            $('code').html(JSON.stringify(res));
+            $('h2').html(JSON.stringify(res.content));
+        })
+    })
+    $('#postReverse').click(function () {
+        let val = $('input').val();
+        $.post(`/harmadik${val ? `?text=${val}` : ''}`, function (res) {
+            $('code').html(JSON.stringify(res));
+            $('h2').html(JSON.stringify(res.content));
+        })
+    })
+</script>
+</body>
+</html>
